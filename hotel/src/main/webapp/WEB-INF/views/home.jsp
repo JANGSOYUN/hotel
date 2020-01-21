@@ -39,11 +39,11 @@ nav {
 	<div align="right">
 	<nav>
 		<ul>
-			<c:if test="${empty loginr }">
+			<c:if test="${empty login }">
 				<li><a href="login">login</a></li>
 				<li><a href="join">join</a></li>
 			</c:if>
-			<c:if test="${!empty loginr }">
+			<c:if test="${!empty login }">
 				<li><a href="logout">logout</a></li>
 				<li><a href="mypage">mypage</a></li>
 			</c:if>
