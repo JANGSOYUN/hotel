@@ -21,7 +21,7 @@ public class PersonController {
 	
 	@RequestMapping(value="join", method=RequestMethod.GET)
 	public ModelAndView join() {
-		return new ModelAndView("join");
+		return new ModelAndView("person/join");
 	}
 	
 	@RequestMapping(value="check", produces="application/text;charset=utf8")
