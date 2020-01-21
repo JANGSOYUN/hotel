@@ -7,13 +7,13 @@
 <title>DELETE</title>
 </head>
 <body>
+<div style="width: 1000px; margin: 20px auto;">
+<%@include file="home.jsp" %>
 	<h1>DELETE</h1>
-	<input type="button" value="HOME"
-		onclick="location.replace('${pageContext.request.contextPath}')">
-	<hr>
 	<form method="post">
 		<p><input name="userpw" type="password" required placeholder="비밀번호"></p>
 		<input type="submit" value="회원탈퇴">
 	</form>
+</div>
 </body>
 </html>

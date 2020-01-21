@@ -7,10 +7,9 @@
 <title>LOGIN</title>
 </head>
 <body>
+<div style="width: 1000px; margin: 20px auto;">
+<%@include file="home.jsp" %>
 <h1>LOGIN</h1>
-<input type="button" value="HOME" onclick="location.replace('${pageContext.request.contextPath}')">
-<hr>
-
 <form method="POST">
 	<p><input name="userid" required value="${cookie.idsave.value }"></p>
 	<p><input name="userpw" type="password" required></p>
@@ -19,5 +18,6 @@
 	<p><input type="submit" value="로그인">
 		<input type="button" value="회원가입" onclick="location.replace('mybatis/join')"></p>
 </form>
+</div>
 </body>
 </html>
