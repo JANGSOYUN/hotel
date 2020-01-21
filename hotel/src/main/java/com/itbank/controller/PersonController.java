@@ -87,7 +87,9 @@ public class PersonController {
 	}
 	
 	@RequestMapping(value="mypage", method=RequestMethod.GET)
-	public void mypage() {}
+	public String mypage() {
+		return "person/mypage";
+	}
 	
 	@RequestMapping(value="mypage", method=RequestMethod.POST)
 	public ModelAndView mypage(PersonVO vo, HttpSession session) {
