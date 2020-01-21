@@ -45,7 +45,7 @@ public class PersonController {
 			model.addAttribute("autologin", session.getAttribute("auto"));
 			return new ModelAndView("home");
 		}else {
-			return new ModelAndView("login");
+			return new ModelAndView("person/login");
 		}
 	}
 	
@@ -53,7 +53,7 @@ public class PersonController {
 	public ModelAndView login(PersonVO vo, HttpSession session, Model model,
 							String idsave, String auto, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("login");
+		mv.setViewName("person/login");
 		PersonVO r = ps.login(vo);
 		
 		if(r != null) {
@@ -94,9 +94,9 @@ public class PersonController {
 		int up = ps.update(vo);
 		if(up == 1) {
 			session.setAttribute("login", vo);
-			return new ModelAndView("info");
+			return new ModelAndView("person/info");
 		}else {
-			return new ModelAndView("mypage");
+			return new ModelAndView("person/mypage");
 		}
 	}
 	
@@ -115,7 +115,7 @@ public class PersonController {
 			response.addCookie(dd);
 			return "home";
 		}else {
-			return "mypage";
+			return "person/mypage";
 		}
 	}
 }
