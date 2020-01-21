@@ -24,6 +24,14 @@
 		<td>NAME</td>
 		<td>${sessionScope.login.username }</td>
 	</tr>
+	<tr>
+		<td>EMAIL</td>
+		<td>${sessionScope.login.useremail }</td>
+	</tr>
+	<tr>
+		<td>PHONE</td>
+		<td>${sessionScope.login.userphone }</td>
+	</tr>
 </table>
 <input type="button" value="정보 수정" onclick="location.replace('mypage')">
 </body>
