@@ -41,7 +41,7 @@
 <h1>JOIN</h1>
 <input type="button" value="HOME" onclick="location.replace('${pageContext.request.contextPath}')">
 <hr>
-<form>
+<form method="post">
 	<p><input id="userid" name="userid" placeholder="아이디" required onblur="check();">
 		<span id="idmsg"></span></p>
 	<p><input name="userpw" type="password" placeholder="비밀번호" required></p>
