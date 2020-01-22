@@ -1,11 +1,11 @@
-package com.itbank.service;
+package com.trip.person.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itbank.controller.JoinRequest;
-import com.itbank.dao.PersonDAO;
-import com.itbank.dao.PersonVO;
+import com.trip.person.controller.JoinRequest;
+import com.trip.person.dao.PersonDAO;
+import com.trip.person.dao.PersonVO;
 
 @Service
 public class PersonService {

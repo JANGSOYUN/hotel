@@ -36,6 +36,6 @@
 	</bean>
 	
 	
-	<context:component-scan base-package="com.itbank.service" />
-	<context:component-scan base-package="com.itbank.dao" />
+	<context:component-scan base-package="com.trip.person.service" />
+	<context:component-scan base-package="com.trip.person.dao" />
 </beans>

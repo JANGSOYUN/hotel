@@ -38,9 +38,9 @@
 </script>
 </head>
 <body>
+<div style="width: 1000px; margin: 20px auto;">
+<%@include file="/WEB-INF/views/home.jsp" %>
 <h1>JOIN</h1>
-<input type="button" value="HOME" onclick="location.replace('${pageContext.request.contextPath}')">
-<hr>
 <form method="post">
 	<p><input id="userid" name="userid" placeholder="아이디" required onblur="check();">
 		<span id="idmsg"></span></p>
@@ -52,5 +52,6 @@
 	<p><input id="submit" type="submit" value="회원가입"></p>
 	<span id="msg"></span>
 </form>
+</div>
 </body>
 </html>
