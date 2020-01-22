@@ -52,7 +52,6 @@ nav {
 			<hr>
 		</nav>
 	</div>
-	<input type="text" id="searchLoc"><button onclick="searchLocation();">검색</button>
 
 </body>
 </html>
