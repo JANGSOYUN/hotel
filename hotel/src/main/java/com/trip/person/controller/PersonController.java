@@ -1,4 +1,4 @@
-package com.itbank.controller;
+package com.trip.person.controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -12,13 +12,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itbank.dao.PersonVO;
-import com.itbank.service.PersonService;
+import com.trip.person.dao.PersonVO;
+import com.trip.person.service.PersonService;
 
 @Controller
 public class PersonController {
 	@Autowired private PersonService ps;
 	
+	// 메인 페이지
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Model model, HttpSession session) {
+		PersonVO r = (PersonVO) session.getAttribute("hotel/login");
+		model.addAttribute("loginr", r);
+		return "person/main";
+	}
+		
 	@RequestMapping(value="join", method=RequestMethod.GET)
 	public ModelAndView join() {
 		return new ModelAndView("person/join");

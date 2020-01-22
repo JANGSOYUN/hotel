@@ -1,4 +1,4 @@
-package com.itbank.dao;
+package com.trip.person.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

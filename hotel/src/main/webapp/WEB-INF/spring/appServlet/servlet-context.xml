@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.itbank.controller" />
+	<context:component-scan base-package="com.trip.person.controller" />
 	
 	<beans:bean class="org.springframework.http.converter.StringHttpMessageConverter">
 		<beans:property name="supportedMediaTypes">
