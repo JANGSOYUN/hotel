@@ -45,7 +45,7 @@ nav {
 			</c:if>
 			<c:if test="${!empty login }">
 				<li><a href="logout">logout</a></li>
-				<li><a href="mypage">mypage</a></li>
+				<li><a href="pwCheck">mypage</a></li>
 			</c:if>
 		</ul>
 		<hr>

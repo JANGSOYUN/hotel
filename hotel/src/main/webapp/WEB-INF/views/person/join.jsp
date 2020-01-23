@@ -39,7 +39,7 @@
 </head>
 <body>
 <div style="width: 1000px; margin: 20px auto;">
-<%@include file="home.jsp" %>
+<%@include file="/WEB-INF/views/home.jsp" %>
 <h1>JOIN</h1>
 <form method="post">
 	<p><input id="userid" name="userid" placeholder="아이디" required onblur="check();">

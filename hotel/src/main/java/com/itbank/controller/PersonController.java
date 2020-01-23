@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itbank.dao.PersonVO;
 import com.itbank.service.PersonService;
@@ -44,6 +45,7 @@ public class PersonController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("person/login");
 		PersonVO r = ps.login(vo);
+		// 아이디, 비번에 해당하는 모든 정보 들고옴
 		
 		if(r != null) {
 			mv.setViewName("redirect:/");
@@ -90,7 +92,7 @@ public class PersonController {
 		return check ? "이미 사용 중인 ID입니다" : "사용 가능한 ID입니다";
 	}
 	
-	// 로그아웃
+	// 로그아웃	// *로그아웃 시 (로그아웃 되었습니다.) 팝업창
 	@RequestMapping("logout")
 	public String logout(HttpSession session, HttpServletResponse response, String idsave) {
 		session.invalidate();
@@ -98,23 +100,47 @@ public class PersonController {
 	}
 	
 	// 마이 페이지 → 회원 정보 수정
-	@RequestMapping(value="mypage", method=RequestMethod.GET)
-	public String mypage() {
-		return "person/mypage";
+	@RequestMapping(value = "pwCheck", method = RequestMethod.GET)
+	public ModelAndView pwCheck() {
+		return new ModelAndView("person/pwCheck");
 	}
 	
-	@RequestMapping(value="mypage", method=RequestMethod.POST)
-	public ModelAndView mypage(PersonVO vo, HttpSession session) {
+	@RequestMapping(value = "pwCheck", method = RequestMethod.POST)
+	public ModelAndView pwCheck(PersonVO vo, HttpSession session, Model model, String userpw) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("person/pwCheck");
+		PersonVO pv = (PersonVO)session.getAttribute("login");
+		String checkpw = pv.getUserpw();
+		
+		if (userpw.equals(checkpw)) {
+			mv.setViewName("redirect:/modify");
+		} else {
+			model.addAttribute("noequals", "비밀번호 불일치");
+			System.out.println("userpw : " + userpw);
+			System.out.println("비밀번호 불일치 체크 확인");
+		}
+		return mv;
+	}
+	
+	@RequestMapping(value = "modify", method = RequestMethod.GET)
+	public ModelAndView modify() {
+		return new ModelAndView("person/modify");
+	}
+	
+	@RequestMapping(value="modify", method=RequestMethod.POST)
+	public ModelAndView modify(PersonVO vo, HttpSession session) {
 		int up = ps.update(vo);
 		if(up == 1) {
+			System.out.println("정보 수정됨");
 			session.setAttribute("login", vo);
 			return new ModelAndView("person/info");
-		}else {
-			return new ModelAndView("person/mypage");
+		} else {
+			System.out.println("정보 수정 안됨");
+			return new ModelAndView("person/modify");
 		}
 	}
 	
-	// 마이 페이지 → 회원 탈퇴
+	// 마이 페이지 → 회원 탈퇴	// *탈퇴 시, 탈퇴 되었음을 표시하는 팝업 창
 	@RequestMapping(value="delete", method=RequestMethod.GET)
 	public ModelAndView delete() {
 		return new ModelAndView("person/delete");
@@ -130,8 +156,43 @@ public class PersonController {
 			dd.setMaxAge(0);
 			response.addCookie(dd);
 			return "person/main";
-		}else {
+		} else {
 			return "person/mypage";
 		}
+	}
+	
+	
+	// ID 찾기
+	@RequestMapping(value = "findId", method = RequestMethod.GET)
+	public ModelAndView findId() {
+		return new ModelAndView("person/findId");
+	}
+	
+	@RequestMapping(value = "findId", method = RequestMethod.POST)
+	public ModelAndView findId(PersonVO vo, RedirectAttributes re) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("person/findId");
+		PersonVO fid = ps.findId(vo);
+		if (vo.getUsername().equals(fid.getUsername()) && vo.getUseremail().equals(fid.getUseremail())) {
+			re.addFlashAttribute("findId", fid.getUserid());
+			System.out.println("찾는 ID : " + fid.getUserid());
+			mv.setViewName("redirect:/login");
+		} else {
+			re.addFlashAttribute("notExist", "존재하지 않는 정보입니다.");
+		}
+		return mv;
+	}
+	
+	// PW 찾기
+	@RequestMapping(value = "findPw", method = RequestMethod.GET)
+	public ModelAndView findPw() {
+		return new ModelAndView("person/findPw");
+	}
+	
+	@RequestMapping(value = "findPw", method = RequestMethod.POST)
+	public ModelAndView findPw(Model model) {
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
 	}
 }

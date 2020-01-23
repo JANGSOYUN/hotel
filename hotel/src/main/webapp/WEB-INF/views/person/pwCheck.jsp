@@ -4,16 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>DELETE</title>
+<title>비밀번호 확인</title>
 </head>
 <body>
 <div style="width: 1000px; margin: 20px auto;">
-<%@include file="/WEB-INF/views/home.jsp" %>
-	<h1>DELETE</h1>
+	<%@include file="/WEB-INF/views/home.jsp"%>
 	<form method="post">
-		<p><input name="userpw" type="password" required placeholder="비밀번호"></p>
-		<input type="submit" value="회원탈퇴">
+	<p>
+		현재 비밀번호<input type="password" name="userpw" required
+			style="margin-left: 10px; margin-right: 10px;"> 
+			<input type="submit" value="입력">
+	</p>
 	</form>
 </div>
+
 </body>
 </html>

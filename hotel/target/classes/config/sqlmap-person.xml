@@ -11,16 +11,25 @@
 		select * from person where userid = #{userid}
 	</select>
 	
+	<select id="checkPw" resultType="person" parameterType="String">
+		select * from person where userpw = #{userpw}
+	</select>
+	
 	<select id="login" parameterType="person" resultType="person">
 		select * from person where userid = #{userid} and userpw = #{userpw} 
 	</select>
 	
 	<update id="update" parameterType="person">
-		update person set userpw = #{userpw}, username = #{username}, useremail = #{useremail}, userphone = #{userphone}
+		update person set 
+		userpw = #{userpw}, useremail = #{useremail}, userphone = #{userphone}
 		where userid = #{userid}
 	</update>
 	
 	<delete id="delete">
-		delete from person where userid = #{userid} and userpw = #{userpw}
+		delete person where userid = #{userid} and userpw = #{userpw}
 	</delete>
+	
+	<select id="findId" resultType="person" parameterType="person">
+		select * from person where username=#{username} and useremail=#{useremail}
+	</select>
 </mapper>

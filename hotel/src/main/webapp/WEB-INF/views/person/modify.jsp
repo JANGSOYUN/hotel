@@ -8,7 +8,7 @@
 </head>
 <body>
 <div style="width: 1000px; margin: 20px auto;">
-<%@include file="home.jsp" %>
+<%@include file="/WEB-INF/views/home.jsp" %>
 	<h1>MYPAGE</h1>
 	<form method="post">
 	<table border="1">
@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<td>PW</td>
-			<td><input name="userpw" type="password" required></td>
+			<td><input name="userpw" type="password" value="${sessionScope.login.userpw }"></td>
 		</tr>
 		<tr>
 			<td>NAME</td>
@@ -26,18 +26,17 @@
 		</tr>
 		<tr>
 			<td>EMAIL</td>
-			<td><input name="useremail" value="${sessionScope.login.useremail }" required></td>
+			<td><input name="useremail" type="text" value="${sessionScope.login.useremail }"></td>
 		</tr>
 		<tr>
 			<td>PHONE</td>
-			<td><input name="userphone" value="${sessionScope.login.userphone }" required></td>
+			<td><input name="userphone" type="text" value="${sessionScope.login.userphone }"></td>
 		</tr>
 	</table>
+	
 	<input type="hidden" name="userid" value="${sessionScope.login.userid }">
 	<input type="hidden" name="username" value="${sessionScope.login.username }">
-	<input type="hidden" name="useremail" value="${sessionScope.login.useremail }">
-	<input type="hidden" name="userphone" value="${sessionScope.login.userphone }">
-	
+
 	<p><input type="submit" value="정보 수정">
 	<input type="button" value="회원탈퇴" onclick="location.replace('delete')"></p>
 	</form>

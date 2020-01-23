@@ -8,7 +8,7 @@
 </head>
 <body>
 <div style="width: 1000px; margin: 20px auto;">
-	<%@include file="home.jsp" %>
+	<%@include file="/WEB-INF/views/home.jsp" %>
 	<h1>INFO</h1>
 	
 	<table border="1">
@@ -33,7 +33,7 @@
 			<td>${sessionScope.login.userphone }</td>
 		</tr>
 	</table>
-	<p><input type="button" value="정보 수정" onclick="location.replace('mypage')"></p>
+	<p><a href="pwCheck"><button>정보 수정</button></a></p>
 </div>
 </body>
 </html>
